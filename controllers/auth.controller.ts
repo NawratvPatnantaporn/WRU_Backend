@@ -76,6 +76,7 @@ export const signup = async (req: Request, res: Response) => {
       idcard,
       phonenumber,
     });
+    console.log("✅ User created:", user);
 
     generateTokenAndSetCookie(res, user._id.toString());
     console.log(user);
