@@ -1,4 +1,4 @@
-FROM node:20
+FROM node:22-alpine
 
 COPY package.json yarn.lock ./
 RUN yarn
