@@ -1,0 +1,23 @@
+services:
+  backend:
+    container_name: backend   
+    image: 'projectback'
+    ports:
+      - 30100:50100
+    env_file:
+      - ../../Back/.env 
+    environment:
+      - NODE_OPTIONS=--max-old-space-size=4096
+    volumes:
+      - ../../Back/src:/app/src
+      - ../../Back/package.json:/app/package.json
+    command: yarn nodemon
+    networks:
+      - app-net 
+  mongo:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: 1234
+    ports:
+      - 27017:27017
